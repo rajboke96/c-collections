@@ -9,8 +9,8 @@ typedef struct
     int size;
 } Ds_String;
 #endif
-#include<char-array.h>
-#include<int-array.h>
+#include<char_array.h>
+#include<int_array.h>
 // --- BUILT IN METHOD START ---
 // constructor function
 Ds_String *Ds_String__default_new__();

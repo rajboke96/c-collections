@@ -1,7 +1,5 @@
-// linear ds
-#include<array.h>
+#include<list.h>
 #include<str.h>
 
-// non-linear ds
 #include<node.h>
 #include<sll.h>
