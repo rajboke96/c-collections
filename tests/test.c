@@ -1,5 +1,15 @@
 #include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+// #define PI "BYE"; // preprocessor replaces PI with 3.14
+// static char ch='D'; // compiler keeps static and global variables in .data section
+// const char *chp = "BYE";
+// chp="Bye";
 int main(){
+    // printf("before, chp - %s\n", chp);
+    // chp="Byee";
+    // printf("after, chp - %s\n", chp);
+    // chp[0]='d';
     // e.g 1 - without '\0'
     // char arr1[]={'c', 'P'};
     // printf("%s\n", arr1);
@@ -44,9 +54,29 @@ int main(){
     // if(ptr==NULL) printf("%s", "ptr val is: NULL!\n");
 
     // e.g 5 check int, float variable value when declared and not initialize
-    char ch;
-    printf("char val is: '%c'\n", ch); // prints to empty: ''
-    int a;
-    printf("int val is: %d\n", a); // prints to 0
+    // char ch;
+    // printf("char val is: '%c'\n", ch); // prints to empty: ''
+    // int a;
+    // printf("int val is: %d\n", a); // prints to 0
+
+    // e.g 6 strcmp example
+    // char *str1="Hello";
+    // char *str2="Hello";
+    // int res=strcmp(str1, str2);
+    // if(res==0){
+    //     printf("Matched!\n");
+    // } 
+    // else{
+    //     printf("Not matched!\n");
+    // }
+
+    // e.g 7 const string example
+    // char *str1="Hello";
+    // free(str1); // invalid pointer - because str1 is statically allocated memory in stack.
+    // str1="World";
+    // str1[0]='D'; // Segmentation fault error because string literal store in .rodata section
+    // printf("5th char - %c\n", str1[5]);
+    // printf("%s\n", str1);
+
     return 0;
 }

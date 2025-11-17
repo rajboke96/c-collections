@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<str.h>
-#include<char-array.h>
+#include<char_array.h>
 
 // --- BUILT IN METHOD START ---
 // constructor function

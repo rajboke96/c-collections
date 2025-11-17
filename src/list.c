@@ -1,14 +1,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#include<dstype.h>
-
-// Defining List structure
-typedef struct{
-    void **arr_ptr;
-    int size;
-    int capacity;
-} Ds_List;
+#include<ds_generic_type.h>
+#include<list.h>
 
 // --- BUILT IN METHOD START ---
 // constructor function
@@ -24,10 +18,31 @@ Ds_List *Ds_List__default_new__(){
 // void Ds_List__init__(Ds_List *self, void **arr_ptr, int size);
 // destructor function
 void Ds_List__free__(Ds_List *self){
-
+    if(self !=NULL){
+        if(self->arr_ptr != NULL){
+            printf("Freeing - List with size %d\n", self->size);
+            for (int i = 0; i < self->size; i++){
+                Ds_Type__free__(self->arr_ptr[i]);
+            }
+            free(self->arr_ptr);
+            self->arr_ptr=NULL;
+        }
+        free(self);
+        self=NULL;
+    }
 }
 // representation function
 // char *Ds_List__str__(Ds_List *self);
+void Ds_List__print_str__(Ds_List *self){
+    printf("[");
+    for (int i = 0; i < Ds_List__size__(self); i++)
+    {
+        Ds_Type *tptr = Ds_List__get(self, i);
+        Ds_Type__printstr__(tptr);
+        if(i!=Ds_List__size__(self)-1) printf(", ");
+    }
+    printf("]");
+}
 int Ds_List__size__(Ds_List *self){
     return self->size;
 }
@@ -81,6 +96,15 @@ void Ds_List__append_FLOAT(Ds_List *self, float data){
     Ds_List__iffullextend(self);
     self->arr_ptr[self->size++]=tptr;
 }
+void Ds_List__append_CHAR(Ds_List *self, char data){
+    Ds_Type *tptr=(Ds_Type *)malloc(sizeof(Ds_Type));
+    tptr->type_meta.type=CHAR;
+    tptr->type_meta.type_name="Float";
+    tptr->ref=malloc(sizeof(char));
+    *((char *)(tptr->ref))=data;
+    Ds_List__iffullextend(self);
+    self->arr_ptr[self->size++]=tptr;
+}
 void Ds_List__append_STRING(Ds_List *self, char *data){
     if(data == NULL){
         Ds_Type *tptr=(Ds_Type *)malloc(sizeof(Ds_Type));
@@ -99,7 +123,11 @@ void Ds_List__append_STRING(Ds_List *self, char *data){
         self->arr_ptr[self->size++]=tptr;
     }
 }
-void Ds_List__append_OTHERTYPES(Ds_List *self, Ds_Type *tptr){
+void Ds_List__append_OTHERTYPES(Ds_List *self, enum Ds_Types type_name, void *ptr){
+    Ds_Type *tptr=(Ds_Type *)malloc(sizeof(Ds_Type));
+    tptr->type_meta.type=type_name;
+    tptr->type_meta.type_name="OTHERTYPES";
+    tptr->ref=ptr;
     Ds_List__iffullextend(self);
     self->arr_ptr[self->size++]=tptr;
 }

@@ -1,7 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include<dsint.h>
-#include<int-array.h>
+#include<int_array.h>
 
 int main(){
     // Ds_String *s1=Ds_String__default_new__();
