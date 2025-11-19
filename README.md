@@ -1,2 +1,2 @@
 # c-collections
-c-collections
+Generic data structures
