@@ -34,11 +34,41 @@ void * Ds_Type__printstr__(Ds_Type *self){
         break;
     }
 }
-void Ds_Type__new__(enum Ds_Types dstype, void *ptr){
-
+Ds_Type *Ds_Type__new__(enum Ds_Types dstype, void *data){
+    Ds_Type *self=(Ds_Type *)malloc(sizeof(Ds_Type));
+    if(self==NULL) return NULL;
+    Ds_Type__init__(self, dstype, data);
+    return self;
 }
-void Ds_Type__init__(Ds_Type *self, enum Ds_Types dstype, void *ptr){
-
+void Ds_Type__init__(Ds_Type *self, enum Ds_Types dstype, void *data){
+    // printf("type: %d, type_name: '%s'\n", self->type_meta.type, self->type_meta.type_name);
+    // printf("%p", Ds_List__get(l1, i));
+    switch (dstype)
+    {
+    case INT:
+        // printf("%p - %d\n", self, *((int *)self->ref));
+        // printf("%d", *((int *)self->ref));
+        break;
+    case FLOAT:
+        // printf("%p - %f\n", self, *((float *)self->ref));
+        printf("%f", *((float *)self->ref));
+        break;
+    case CHAR:
+        // printf("%p - %f\n", self, *((float *)self->ref));
+        printf("%c", *((char *)self->ref));
+        break;
+    case STRING:
+        // printf("%p - %s\n", self, (char *)self->ref);
+        printf("%s", (char *)self->ref);
+        break;
+    case DS_NODE:
+        Ds_Node__printstr__((Ds_Node *)self->ref);
+        // printf("%d", ((Ds_Node *)self->ref)->data);
+        break;
+    default:
+        printf("<object at - %p>", self->ref);
+        break;
+    }
 }
 void Ds_Type__free__(Ds_Type *self){
  if(self!=NULL){

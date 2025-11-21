@@ -1,5 +1,4 @@
-#include<list.h>
-#include<str.h>
+#include<array.h>
 
 #include<node.h>
 #include<sll.h>

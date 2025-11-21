@@ -100,6 +100,7 @@ void Ds_List__append_CHAR(Ds_List *self, char data){
     Ds_Type *tptr=(Ds_Type *)malloc(sizeof(Ds_Type));
     tptr->type_meta.type=CHAR;
     tptr->type_meta.type_name="Float";
+    Ds_Type__new__(CHAR, data);
     tptr->ref=malloc(sizeof(char));
     *((char *)(tptr->ref))=data;
     Ds_List__iffullextend(self);
