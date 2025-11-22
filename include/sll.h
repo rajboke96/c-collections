@@ -5,18 +5,19 @@
 typedef struct {
     Ds_Node *head;
     int size;
-} Ds_sll__SLL;
+    int dt_size;
+} Ds_SLL;
 
 // constructor function
-Ds_sll__SLL *Ds_sll__new_SLL();
+Ds_SLL *Ds_SLL__new__(int dt_size);
 // init function
-void Ds_sll__init_SLL(Ds_sll__SLL *self);
-// representation function
-char *Ds_sll__get_str(Ds_sll__SLL *self);
+void Ds_SLL__init__(Ds_SLL *self, int dt_size);
+// destructor function
+void Ds_SLL__free__(Ds_SLL *self);
 // operation functions
-int Ds_sll__insert(Ds_sll__SLL *self, int data);
-Ds_Node *Ds_sll__search(Ds_sll__SLL *self, int data);
-int Ds_sll__delete(Ds_sll__SLL *self);
-const Ds_Array *Ds_traverse(Ds_sll__SLL *self);
-int Ds_sll__get_size(Ds_sll__SLL *self);
+int Ds_SLL__insert(Ds_SLL *self, int data);
+Ds_Node *Ds_SLL__search(Ds_SLL *self, int data);
+int Ds_SLL__delete(Ds_SLL *self);
+const Ds_Array *Ds_traverse(Ds_SLL *self);
+int Ds_SLL__get_size(Ds_SLL *self);
 #endif
