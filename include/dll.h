@@ -22,6 +22,6 @@ int Ds_DLL__insert_after(Ds_DLL *self, Ds_DNode *tmp_node, void *data);
 void *Ds_DLL__delete_at_first(Ds_DLL *self);
 void *Ds_DLL__delete_at_last(Ds_DLL *self);
 void *Ds_DLL__delete(Ds_DLL *self, void *data);
-const Ds_Array *Ds_traverse(Ds_DLL *self);
+const Ds_Array *DS_DLL__traverse(Ds_DLL *self);
 int Ds_DLL__get_size(Ds_DLL *self);
 #endif
