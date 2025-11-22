@@ -36,11 +36,7 @@ void Ds_Array__free__(Ds_Array *self){
         self=NULL;
     }
 }
-// representation function
-// char *Ds_Array__str__(Ds_Array *self);
-int Ds_Array__size__(Ds_Array *self){
-    return self->size;
-}
+
 // --- BUILT IN METHOD END ---
 // operation functions
 void Ds_Array__extend(Ds_Array *self){
@@ -58,9 +54,11 @@ int Ds_Array__iffullextend(Ds_Array *self){
     return 0;
 }
 void *Ds_Array__get(Ds_Array *self, int index){
+    if(!(index>=0 && index <= self->size)) return NULL;
     return self->arr_ptr+(self->dt_size*index);
 }
 void Ds_Array__put(Ds_Array *self, int index, void *data){
+    if(!(index>=0 && index < self->capacity)) return;
     Ds_Array__iffullextend(self);
     memcpy(self->arr_ptr+(self->dt_size*index), data, self->dt_size);
     self->size++;
