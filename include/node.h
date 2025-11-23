@@ -1,13 +1,16 @@
 #ifndef NODE_DEF
 #define NODE_DEF
 typedef struct Ds_Node{
-    void *data;
+    Ds_Data data;
     struct Ds_Node *next;
 } Ds_Node;
 
-void Ds_Node__new__(void *data, Ds_Node *next);
+void Ds_Node__default_new__();
+void Ds_Node__new__(unsigned int dt_size, void *data, Ds_Node *next);
 void Ds_Node__init__(Ds_Node *self, void *data, Ds_Node *next);
 void Ds_Node__free__(Ds_Node *self);
+int Ds_Node__set(void *data);
+void *Ds_Node__get();
 #endif
 #ifndef DNODE_DEF
 #define DNODE_DEF
