@@ -25,7 +25,11 @@ void Ds_SLL__free__(Ds_SLL *self){
     }
 }
 // operation functions
-int Ds_SLL__insert_at_first(Ds_SLL *self, void *data);
+int Ds_SLL__insert_at_first(Ds_SLL *self, void *data){
+    Ds_Node *new_node=Ds_Node__new__(self->dt_size, data, head);
+    head=new_node;
+    self->size++;
+}
 int Ds_SLL__insert_at_last(Ds_SLL *self, void *data){
     Ds_Node *tail=self->head;
     while(tail !=NULL){
@@ -38,9 +42,10 @@ int Ds_SLL__insert_at_last(Ds_SLL *self, void *data){
     } else{
         tail->next=new_node;
     }
+    self->size++;
 }
-Ds_Node *Ds_SLL__search(Ds_SLL *self, void *data);
 int Ds_SLL__insert_after(Ds_SLL *self, Ds_Node *tmp_node, void *data);
+Ds_Node *Ds_SLL__search(Ds_SLL *self, void *data);
 void *Ds_SLL__delete_at_first(Ds_SLL *self);
 void *Ds_SLL__delete_at_last(Ds_SLL *self);
 void *Ds_SLL__delete(Ds_SLL *self, void *data);
